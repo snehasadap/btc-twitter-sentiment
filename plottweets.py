@@ -3,7 +3,7 @@ import numpy as np
 import plotly.graph_objs as go
 
 
-file_path = '/Users/sneha/Desktop/twitter-sentiment-analysis/bitcoin_tweets_with_sentiments.csv 15-51-37-951.csv'
+file_path = 'path-to-btc-entiment-anaysis.csv'
 tweets_df = pd.read_csv(file_path)
 
 tweets_df['date'] = pd.to_datetime(tweets_df['date'], errors='coerce')
