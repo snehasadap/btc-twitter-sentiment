@@ -3,12 +3,12 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import nltk
 import ssl
 
-# Set up SSL and download VADER lexicon
+
 ssl._create_default_https_context = ssl._create_unverified_context
 nltk.download('vader_lexicon')
 
 # Initialize VADER
-sid = SentimentIntensityAnalyzer()
+
 
 # Define function for sentiment analysis
 def get_sentiment(text):
@@ -29,10 +29,10 @@ columns = [
 chunk_size = 90000
 first_chunk = True
 
-# Process the file in chunks
+
 for chunk in pd.read_csv('Bitcoin_tweets.csv', chunksize=chunk_size):
     chunk.dropna(subset=['text'], inplace=True)  
     chunk['Sentiment'] = chunk['text'].apply(get_sentiment)  
     
-    chunk.to_csv('Tweets_With_Sentiments.csv', mode='a', header=first_chunk, index=False, columns=columns)
+    chunk.to_csv('bitcoin_sentiments.csv', mode='a', header=first_chunk, index=False, columns=columns)
     first_chunk = False  
